@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для продукта.
+Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
+При создании объекта от функции-конструктора/класса необходимо передавать имя
+и цену товара, эта информация должна быть сохранена в объекте.
+Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
+метод должен уменьшать стоимость продукта на 25%.
+Необходимо продемонстрировать работу с объектом (в свободной форме).
+-->
+<script>
+  "use strict";
+  function logPrice(name, price) {
+    console.log(`Наименование: ${name}, цена: ${price}`);
+  }
+
+  function ProductES5(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+  ProductES5.prototype.make25Discount = function() {
+    this.price *= 0.75;
+  };
+
+  const someProductES5 = new ProductES5('Процессор', 17000);
+  logPrice(someProductES5.name, someProductES5.price);
+  someProductES5.make25Discount();
+  logPrice(someProductES5.name, someProductES5.price);
+
+  // Через класс
+
+  class ProductES6 {
+    constructor(name, price) {
+      this.name = name;
+      this.price = price;
+    }
+    make25Discount() {
+      this.price *= 0.75;
+    }
+  }
+
+  const someProductES6 = new ProductES6('Процессор', 17000);
+  logPrice(someProductES6.name, someProductES6.price);
+  someProductES6.make25Discount();
+  logPrice(someProductES6.name, someProductES6.price);
+</script>
+</body>
+</html>
